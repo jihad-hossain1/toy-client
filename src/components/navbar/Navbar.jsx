@@ -47,25 +47,25 @@ const Navbar = () => {
         <div className="flex items-center">
           <img src={logo} className="w-10" alt="" />
           <Link to="/" className="text-xl ml-2">
-            Animal <span className="font-semibold">Kidol</span>
+            Animal <span className="font-semibold hover:text-primary">Kidol</span>
           </Link>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu-horizontal space-x-10">
-          <li className="border hover:border-b-primary  hover:font-semibold">
+          <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
             <Link to="/">Home</Link>
           </li>
-          <li className="border hover:border-b-primary  hover:font-semibold">
+          <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
             <Link to="allToy">All Toy</Link>
           </li>
-          <li className="border hover:border-b-primary  hover:font-semibold">
+          <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
             <Link to="myToy">My Toy</Link>
           </li>
-          <li className="border hover:border-b-primary  hover:font-semibold">
+          <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
             <Link to="addToy">Add A Toy</Link>
           </li>
-          <li className="border hover:border-b-primary  hover:font-semibold">
+          <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
             <Link to="blog">Blog</Link>
           </li>
         </ul>

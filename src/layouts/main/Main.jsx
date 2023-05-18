@@ -6,10 +6,13 @@ import Footer from "../../components/footer/Footer";
 const Main = () => {
   return (
     <div>
-      <div className="shadow-md p-2">
+      <div className="p-2 md:max-w-[1000px] mx-auto">
         <Navbar></Navbar>
       </div>
-      <Outlet></Outlet>
+      <hr className="border-[] border-gray-300 my-2" />
+      <div className="min-h-screen">
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );
