@@ -1,8 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo/animalKidol.png";
+import { AuthContext } from "../../provider/AuthProvider";
+import { FaUserAlt } from "react-icons/fa";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -28,55 +38,141 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li className="border hover:border-b-primary  hover:font-semibold">
-              <Link to="/">Home</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-primary" : "default"
+                }
+                to="/"
+              >
+                Home
+              </NavLink>
             </li>
             <li className="border hover:border-b-primary  hover:font-semibold">
-              <Link to="allToy">All Toy</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-primary" : "default"
+                }
+                to="allToy"
+              >
+                All Toy
+              </NavLink>
             </li>
             <li className="border hover:border-b-primary  hover:font-semibold">
-              <Link to="myToy">My Toy</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-primary" : "default"
+                }
+                to="myToy"
+              >
+                My Toy
+              </NavLink>
             </li>
             <li className="border hover:border-b-primary  hover:font-semibold">
-              <Link to="addToy">Add A Toy</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-primary" : "default"
+                }
+                to="addToy"
+              >
+                Add A Toy
+              </NavLink>
             </li>
             <li className="border hover:border-b-primary  hover:font-semibold">
-              <Link to="blog">Blog</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "text-primary" : "default"
+                }
+                to="blog"
+              >
+                Blog
+              </NavLink>
             </li>
           </ul>
         </div>
         <div className="flex items-center">
           <img src={logo} className="w-10" alt="" />
-          <Link to="/" className="text-xl ml-2">
-            Animal <span className="font-semibold hover:text-primary">Kidol</span>
-          </Link>
+          <NavLink to="/" className="text-xl ml-2">
+            Animal{" "}
+            <span className="font-semibold hover:text-primary">Kidol</span>
+          </NavLink>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu-horizontal space-x-10">
           <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
-            <Link to="/">Home</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-primary" : "default"
+              }
+              to="/"
+            >
+              Home
+            </NavLink>
           </li>
           <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
-            <Link to="allToy">All Toy</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-primary" : "default"
+              }
+              to="allToy"
+            >
+              All Toy
+            </NavLink>
           </li>
           <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
-            <Link to="myToy">My Toy</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-primary" : "default"
+              }
+              to="myToy"
+            >
+              My Toy
+            </NavLink>
           </li>
           <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
-            <Link to="addToy">Add A Toy</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-primary" : "default"
+              }
+              to="addToy"
+            >
+              Add A Toy
+            </NavLink>
           </li>
           <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
-            <Link to="blog">Blog</Link>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-primary" : "default"
+              }
+              to="blog"
+            >
+              Blog
+            </NavLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Link
-          to="login"
-          className="rounded-lg border border-primary px-3 py-1 hover:bg-primary hover:tra"
-        >
-          LogIn
-        </Link>
+        {user ? (
+          <div className="flex items-center space-x-2">
+            <FaUserAlt
+              title={user.email.slice(0, 5)}
+              className="text-lg"
+            ></FaUserAlt>
+            <img
+              className="w-10"
+              title={user?.displayName}
+              src={user?.photoURL}
+              alt=""
+            />
+            <span onClick={handleLogOut} className="ml-2 cursor-pointer">
+              LogOut
+            </span>
+          </div>
+        ) : (
+          <Link className="hover:text-primary hover:font-semibold" to="/login">
+            LogIn
+          </Link>
+        )}
       </div>
     </div>
   );
