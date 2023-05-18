@@ -22,8 +22,8 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         setLogged(loggedUser);
-        navigate(from, { replace: true });
-        // console.log(loggedUser);
+        // navigate(from, { replace: true });
+        console.log(loggedUser);
         form.reset();
       })
       .catch((error) => {
@@ -50,9 +50,7 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow bg-base-100">
           <div className="card-body">
-            <form
-            // onSubmit={handleLogin}
-            >
+            <form onSubmit={handleLogin}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
