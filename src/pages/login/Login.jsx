@@ -1,17 +1,42 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { FaBeer, FaGofore } from "react-icons/fa";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaGofore } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Login = () => {
-  const { name } = useContext(AuthContext);
-  console.log(name);
+  const { loginEmail, loginWithGoogle } = useContext(AuthContext);
+  const [logged, setLogged] = useState("");
+  const [loginError, setLoginError] = useState("");
+  // const navigate = useNavigate();
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || "/";
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    loginEmail(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        setLogged(loggedUser);
+        navigate(from, { replace: true });
+        // console.log(loggedUser);
+        form.reset();
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error);
+      });
+  };
+
+  const handleloginGoogle = () => {
+    loginWithGoogle().then((result) => {
+      const isLogin = result.user;
+      console.log(isLogin);
+    });
   };
 
   return (
@@ -25,7 +50,9 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow bg-base-100">
           <div className="card-body">
-            <form onSubmit={handleLogin}>
+            <form
+            // onSubmit={handleLogin}
+            >
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -67,7 +94,10 @@ const Login = () => {
               </div>
 
               <div className="text-center hover:form-control mx-1 my-3">
-                <button className="btn btn-primary btn-outline ">
+                <button
+                  onClick={handleloginGoogle}
+                  className="btn btn-primary btn-outline "
+                >
                   <FaGofore className="text-xl"></FaGofore>
                   <span className="text-xl ml-3">Login</span>
                 </button>
