@@ -52,7 +52,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu-horizontal space-x-4">
+        <ul className="menu-horizontal space-x-10">
           <li className="border hover:border-b-primary  hover:font-semibold">
             <Link to="/">Home</Link>
           </li>
@@ -71,7 +71,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="login" className="rounded-lg border border-primary px-3 py-1">
+        <Link
+          to="login"
+          className="rounded-lg border border-primary px-3 py-1 hover:bg-primary hover:tra"
+        >
           LogIn
         </Link>
       </div>
