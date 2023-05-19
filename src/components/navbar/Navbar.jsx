@@ -37,7 +37,7 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li className="border hover:border-b-primary  hover:font-semibold">
+            <li className="hover:text-primary hover:font-semibold">
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "text-primary" : "default"
@@ -47,7 +47,7 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li className="border hover:border-b-primary  hover:font-semibold">
+            <li className="hover:font-semibold hover:text-primary">
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "text-primary" : "default"
@@ -57,27 +57,32 @@ const Navbar = () => {
                 All Toy
               </NavLink>
             </li>
-            <li className="border hover:border-b-primary  hover:font-semibold">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "text-primary" : "default"
-                }
-                to="myToy"
-              >
-                My Toy
-              </NavLink>
-            </li>
-            <li className="border hover:border-b-primary  hover:font-semibold">
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "text-primary" : "default"
-                }
-                to="addToy"
-              >
-                Add A Toy
-              </NavLink>
-            </li>
-            <li className="border hover:border-b-primary  hover:font-semibold">
+            {user && (
+              <li className=" hover:font-semibold hover:text-primary">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "text-primary" : "default"
+                  }
+                  to="myToy"
+                >
+                  My Toy
+                </NavLink>
+              </li>
+            )}
+            {user && (
+              <li className=" hover:font-semibold hover:text-primary">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "text-primary" : "default"
+                  }
+                  to="addToy"
+                >
+                  Add A Toy
+                </NavLink>
+              </li>
+            )}
+
+            <li className=" hover:font-semibold">
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "text-primary" : "default"
@@ -99,7 +104,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu-horizontal space-x-10">
-          <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
+          <li className=" hover:font-semibold hover:text-primary">
             <NavLink
               className={({ isActive }) =>
                 isActive ? "text-primary" : "default"
@@ -109,7 +114,7 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
+          <li className=" hover:font-semibold hover:text-primary">
             <NavLink
               className={({ isActive }) =>
                 isActive ? "text-primary" : "default"
@@ -120,7 +125,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           {user && (
-            <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
+            <li className="hover:font-semibold hover:text-primary">
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "text-primary" : "default"
@@ -132,7 +137,7 @@ const Navbar = () => {
             </li>
           )}
           {user && (
-            <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
+            <li className="hover:font-semibold hover:text-primary">
               <NavLink
                 className={({ isActive }) =>
                   isActive ? "text-primary" : "default"
@@ -143,7 +148,7 @@ const Navbar = () => {
               </NavLink>
             </li>
           )}
-          <li className="border hover:border-b-primary  hover:font-semibold hover:text-primary">
+          <li className="  hover:font-semibold hover:text-primary">
             <NavLink
               className={({ isActive }) =>
                 isActive ? "text-primary" : "default"

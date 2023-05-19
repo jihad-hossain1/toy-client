@@ -1,11 +1,120 @@
-import React from 'react';
+import React from "react";
 
 const AddToy = () => {
-    return (
-        <div>
-            <h2>add toy here....</h2>
-        </div>
-    );
+  const handleAddToy = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const toyName = form.toyName.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const categoryId = form.categoryId.value;
+    const price = form.price.value;
+    const photoUrl = form.photoUrl.value;
+    const rating = form.rating.value;
+    const seller = form.seller.value;
+    const email = form.email.value;
+    const quantity = form.quantity.value;
+    const allToys = {
+      toyName,
+      category,
+      details,
+      categoryId,
+      price,
+      photoUrl,
+      rating,
+      seller,
+      email,
+      quantity,
+    };
+    console.log(allToys);
+  };
+  return (
+    <div>
+      <h2>add toy here....</h2>
+      <div>
+        <form onSubmit={handleAddToy}>
+          <div className="flex flex-col items-center space-y-5">
+            <input
+              type="text"
+              placeholder="Toys Name"
+              className="input input-bordered input-secondary w-full max-w-xs shadow"
+              name="toyName"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Category Name"
+              className="shadow input input-bordered input-secondary w-full max-w-xs"
+              name="category"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Details"
+              className="shadow input input-bordered input-secondary w-full max-w-xs"
+              name="details"
+              required
+            />
+            <input
+              type="text"
+              placeholder="category id"
+              className="shadow input input-bordered input-secondary w-full max-w-xs"
+              name="categoryId"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Price"
+              className="shadow input input-bordered input-secondary w-full max-w-xs"
+              name="price"
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="Quantity"
+              className="shadow input input-bordered input-secondary w-full max-w-xs "
+              name="quantity"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Photo Url"
+              className="shadow input input-bordered input-secondary w-full max-w-xs"
+              name="photoUrl"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Rating"
+              className="shadow input input-bordered input-secondary w-full max-w-xs"
+              name="rating"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Seller Name"
+              className="shadow input input-bordered input-secondary w-full max-w-xs"
+              name="seller"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Seller Email"
+              className="shadow input input-bordered input-secondary w-full max-w-xs"
+              name="email"
+              required
+            />
+            <input
+              type="submit"
+              value="add Toys"
+              className="shadow input input-bordered input-secondary w-full max-w-xs mt-5 cursor-pointer hover:bg-primary uppercase border border-primary"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default AddToy;
