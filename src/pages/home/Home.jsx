@@ -3,12 +3,12 @@ import img1 from "../../assets/svg/Cloudy.svg";
 import GallaryCard from "../../components/gallaryCard/GallaryCard";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import DragonToys from "../../components/toyCategory/DragonToys";
+// import DragonToys from "../../components/toyCategory/DragonToys";
 
 // import img2 from '../../assets/svg/babyBanner-removebg-preview.png'
 const Home = () => {
   const [gallaries, setGallaries] = useState([]);
-
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/toyGallary")
       .then((res) => res.json())
@@ -17,7 +17,38 @@ const Home = () => {
         setGallaries(data);
       });
   });
+  useEffect(() => {
+    fetch("http://localhost:5000/category")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCategories(data);
+      });
+  }, []);
 
+  const latestBlog = [
+    {
+      name: "June cha",
+      date: "21/03/2023",
+      img: "https://i.ibb.co/LtcYshh/eee.png",
+      details: "Baby Planet's toys makes learning so easy",
+      id: 1,
+    },
+    {
+      name: "June cha",
+      date: "21/03/2023",
+      img: "https://i.ibb.co/5skchS2/three.jpg",
+      details: "Baby Planet's toys makes learning so easy",
+      id: 2,
+    },
+    {
+      name: "June cha",
+      date: "21/03/2023",
+      img: "https://i.ibb.co/sW1NYTJ/two.jpg",
+      details: "Baby Planet's toys makes learning so easy",
+      id: 3,
+    },
+  ];
   return (
     <>
       {/* banner section  */}
@@ -62,23 +93,92 @@ const Home = () => {
           <div className="flex justify-center mt-6">
             <Tabs>
               <TabList className={`text-slate-600 font-semibold `}>
-                <Tab>Dragon Toys</Tab>
-                <Tab>Dog Toys</Tab>
-                <Tab>Cat Toys</Tab>
-                <Tab>Elephant Toys</Tab>
+                {categories.map((category) => (
+                  <Tab key={category._id}>{category.name}</Tab>
+                ))}
               </TabList>
 
               <TabPanel></TabPanel>
               <TabPanel>
                 <h2>Any content 2</h2>
               </TabPanel>
-              <TabPanel>
-                <h2>Any content 3</h2>
-              </TabPanel>
-              <TabPanel>
-                <h2>Any content 4</h2>
-              </TabPanel>
             </Tabs>
+          </div>
+        </div>
+
+        {/* extra two section  */}
+        <div className="mt-24">
+          <div className="text-center space-y-3">
+            <h4 className="text-5xl font-extrabold">Latest Blog</h4>
+            <p className="text-sm text-gray-600">
+              From jungle animals to farm animals, discover animal toys and
+              figures here. Pick up one of our animal tubs full of <br />{" "}
+              exciting miniature figures or magical unicorns, and dragons! You
+              can prepare for hours of roarsome fun with <br /> Jurassic World
+              dinosaur toys including fearsome Tyrannosauruses and other
+              species.
+            </p>
+          </div>
+          <div className="md:flex items-center space-y-3 space-x-2 my-2 mx-3 px-4">
+            {latestBlog.map((blog) => (
+              <div key={blog.id}>
+                <img className="rounded" src={blog.img} alt="" />
+                <p className="font-bold mt-1 ">
+                  <span className="text-gray-500">By,</span>{" "}
+                  <span className="text-primary">{blog.name}</span>,{" "}
+                  <span className="text-gray-600">{blog.date}</span>{" "}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-24 mb-10">
+          <h2 className="text-center font-extrabold text-4xl">
+            Deal Of The Day
+          </h2>
+          <div className="grid md:grid-cols-2 gap-3 px-3 mt-5">
+            <div
+              className="hero"
+              style={{
+                backgroundImage: `url("https://i.ibb.co/RHmMrrT/5.jpg")`,
+              }}
+            >
+              <div className="hero-overlay bg-opacity-40"></div>
+              <div className="hero-content text-center ">
+                <div className="max-w-md">
+                  <h1 className="mb-5 text-4xl font-bold text-white">
+                    Collection
+                  </h1>
+                  <p className="mb-5 text-white font-bold">
+                    Flat <span className="text-3xl font-bold">20%</span> of
+                  </p>
+                  <button className="rounded-xl px-4 py-2 bg-primary text-white font-semibold hover:bg-secondary hover:text-primary">
+                    Shop Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              className="hero"
+              style={{
+                backgroundImage: `url("https://i.ibb.co/NnrQM2k/4.jpg")`,
+              }}
+            >
+              <div className="hero-overlay bg-opacity-40"></div>
+              <div className="hero-content text-center ">
+                <div className="max-w-md">
+                  <h1 className="mb-5 text-4xl font-bold text-white">
+                    Collection
+                  </h1>
+                  <p className="mb-5 text-white font-bold">
+                    Flat <span className="text-3xl font-bold">30%</span> of
+                  </p>
+                  <button className="rounded-xl px-4 py-2 bg-primary text-white font-semibold hover:bg-secondary hover:text-primary">
+                    Shop Now
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
