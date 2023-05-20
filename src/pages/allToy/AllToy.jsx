@@ -8,7 +8,7 @@ const AllToy = () => {
   const [seeMore, setSeeMore] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:5000/alltoys")
+    fetch("https://animal-kidol-server.vercel.app/alltoys")
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);
@@ -20,6 +20,9 @@ const AllToy = () => {
       <h3 className="text-xl text-gray-600 font-semibold">
         Total Toys : {allToys.length}
       </h3>
+      {/* <form>
+        <input type="search" name="" id="" />
+      </form> */}
       <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
         {allToys.slice(0, seeMore ? allToys.length : 20).map((toy) => (
           <SingleToyCard key={toy._id} toy={toy}></SingleToyCard>

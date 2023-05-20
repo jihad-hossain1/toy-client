@@ -12,7 +12,7 @@ const Home = () => {
   const [gallaries, setGallaries] = useState([]);
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/toyGallary")
+    fetch("https://animal-kidol-server.vercel.app/toyGallary")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -20,7 +20,7 @@ const Home = () => {
       });
   });
   useEffect(() => {
-    fetch("http://localhost:5000/category")
+    fetch("https://animal-kidol-server.vercel.app/category")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
