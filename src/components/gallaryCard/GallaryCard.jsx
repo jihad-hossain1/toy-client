@@ -2,7 +2,7 @@ import React from "react";
 
 const GallaryCard = ({ gallary }) => {
   //   console.log(gallary);
-  const { image, name, price, rating } = gallary;
+  const { image, name, price } = gallary;
   return (
     <div className="rounded border shadow-sm bg-secondary px-5 flex flex-col">
       <img className="pt-5" src={image} alt="" />

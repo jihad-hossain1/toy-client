@@ -52,7 +52,9 @@ const AddToy = () => {
   };
   return (
     <div>
-      <h2>add toy here....</h2>
+      <h2 className="text-center text-4xl font-extrabold text-gray-600 my-10">
+        Add Your Toys
+      </h2>
       <div>
         <form onSubmit={handleAddToy}>
           <div className="flex flex-col items-center space-y-5">
