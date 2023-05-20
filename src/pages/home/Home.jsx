@@ -3,10 +3,12 @@ import img1 from "../../assets/svg/Cloudy.svg";
 import GallaryCard from "../../components/gallaryCard/GallaryCard";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import useTitle from "../../hook/useTitle";
 // import DragonToys from "../../components/toyCategory/DragonToys";
 
 // import img2 from '../../assets/svg/babyBanner-removebg-preview.png'
 const Home = () => {
+  useTitle("Home");
   const [gallaries, setGallaries] = useState([]);
   const [categories, setCategories] = useState([]);
   useEffect(() => {

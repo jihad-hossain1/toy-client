@@ -1,7 +1,9 @@
 import React from "react";
 import Swal from "sweetalert2";
+import useTitle from "../../hook/useTitle";
 
 const AddToy = () => {
+  useTitle("AddToy");
   const handleAddToy = (e) => {
     e.preventDefault();
     const form = e.target;

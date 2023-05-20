@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "../../hook/useTitle";
 
 const Blog = () => {
+  useTitle("Blog");
   return (
     <div className="md:w-[1200px] mx-auto">
       <h2 className="text-5xl text-gray-500 font-extrabold my-24 text-center">
