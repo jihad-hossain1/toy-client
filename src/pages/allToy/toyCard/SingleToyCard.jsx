@@ -2,19 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SingleToyCard = ({ toy }) => {
-  const {
-    toyName,
-    category,
-    details,
-    categoryId,
-    price,
-    photoUrl,
-    rating,
-    seller,
-    email,
-    quantity,
-    _id,
-  } = toy;
+  const { toyName, category, price, photoUrl, seller, quantity, _id } = toy;
   return (
     <div className="border shadow hover:shadow-md border-secondary hover:bg-secondary p-4 rounded-md flex flex-col">
       <div className="flex justify-center items-center">
@@ -30,7 +18,7 @@ const SingleToyCard = ({ toy }) => {
         </div>
         <div className="mt-auto">
           <button className="px-3 py-1 rounded-md border border-primary hover:border-secondary hover:bg-primary hover:text-white">
-            <Link>Details</Link>
+            <Link to={`/allToy/${_id}`}>Details</Link>
           </button>
         </div>
       </div>
