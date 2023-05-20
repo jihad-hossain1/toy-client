@@ -4,16 +4,6 @@ import { Link } from "react-router-dom";
 const SingleUserToy = ({ userToy, handleDelete }) => {
   const { toyName, category, price, photoUrl, seller, email, _id } = userToy;
 
-  //   const handleDelete = (id) => {
-  //     const proceed = confirm("are you sure want to delete");
-  //     if (proceed) {
-  //       fetch()
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           console.log(data);
-  //         });
-  //     }
-  //   };
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -62,7 +52,7 @@ const SingleUserToy = ({ userToy, handleDelete }) => {
               <td className="">
                 <ul className="space-x-3">
                   <li className="border border-green-600 px-2 hover:shadow-md hover:font-semibold inline-block rounded shadow hover:bg-green-500 hover:text-white">
-                    <Link>Update</Link>
+                    <Link to={`/userToyUpdate/${_id}`}>Update</Link>
                   </li>
                   <li
                     onClick={() => handleDelete(_id)}
