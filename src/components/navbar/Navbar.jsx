@@ -170,7 +170,15 @@ const Navbar = () => {
             <img
               className="w-10"
               title={user?.displayName}
-              src={user?.photoURL}
+              src={
+                user ? (
+                  <>{user?.photoURL}</>
+                ) : (
+                  <>
+                    <p>Icon</p>
+                  </>
+                )
+              }
               alt=""
             />
             <span onClick={handleLogOut} className="ml-2 cursor-pointer">
