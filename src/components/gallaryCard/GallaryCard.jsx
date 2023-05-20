@@ -4,7 +4,10 @@ const GallaryCard = ({ gallary }) => {
   //   console.log(gallary);
   const { image, name, price } = gallary;
   return (
-    <div className="rounded border shadow-sm bg-secondary px-5 flex flex-col">
+    <div
+      className="rounded border shadow-sm bg-secondary px-5 flex flex-col"
+      data-aos="zoom-in-down"
+    >
       <img className="pt-5" src={image} alt="" />
       <div className="py-5 mt-auto">
         <div className="rating">

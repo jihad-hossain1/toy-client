@@ -77,7 +77,7 @@ const Home = () => {
         <div className="mt-24">
           <h3 className="text-center font-extrabold text-4xl">Toys Gallary</h3>
         </div>
-        <div>
+        <div className="" data-aos="fade-up-left">
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 mx-3 my-7">
             {gallaries.map((gallary) => (
               <GallaryCard key={gallary._id} gallary={gallary}></GallaryCard>
@@ -86,7 +86,7 @@ const Home = () => {
         </div>
 
         {/* shop by category */}
-        <div className="my-6 md:mt-24">
+        <div className="my-6 md:mt-24" data-aos="fade-up-left">
           <div className="py-5">
             <h4 className="text-center text-3xl font-extrabold">
               Shop By Category
@@ -110,7 +110,7 @@ const Home = () => {
 
         {/* extra two section  */}
         <div className="mt-24">
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3" data-aos="fade-down-right">
             <h4 className="text-5xl font-extrabold">Latest Blog</h4>
             <p className="text-sm text-gray-600">
               From jungle animals to farm animals, discover animal toys and
@@ -123,7 +123,7 @@ const Home = () => {
           </div>
           <div className="md:flex items-center space-y-3 space-x-2 my-2 mx-3 px-4">
             {latestBlog.map((blog) => (
-              <div key={blog.id}>
+              <div key={blog.id} data-aos="fade-down-left">
                 <img className="rounded" src={blog.img} alt="" />
                 <p className="font-bold mt-1 ">
                   <span className="text-gray-500">By,</span>{" "}
@@ -134,7 +134,11 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="mt-24 mb-10">
+        <div
+          className="mt-24 mb-10"
+          data-aos="fade-up"
+          data-aos-anchor=".other-element"
+        >
           <h2 className="text-center font-extrabold text-4xl">
             Deal Of The Day
           </h2>

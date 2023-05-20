@@ -6,7 +6,7 @@ const SingleUserToy = ({ userToy, handleDelete }) => {
 
   return (
     <div>
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full" data-aos="zoom-in">
         <table className="table w-full">
           {/* head */}
           <thead>
