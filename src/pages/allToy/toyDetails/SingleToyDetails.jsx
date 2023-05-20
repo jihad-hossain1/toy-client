@@ -33,6 +33,9 @@ const SingleToyDetails = () => {
             Quantity : <span className="font-semibold">{quantity}</span>
           </p>
           <p>
+            Category : <span className="font-semibold">{category}</span>
+          </p>
+          <p>
             Rating : <span className="font-semibold">{rating}</span>
           </p>
 

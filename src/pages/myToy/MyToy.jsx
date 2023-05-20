@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import SingleUserToy from "./userToy/SingleUserToy";
 
 const MyToy = () => {
+  const { user } = useContext(AuthContext);
+  const [userToys, setUserToys] = useState([]);
+  const url = `http://localhost:5000/usertoy?email=${user?.email}`;
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUserToys(data);
+      });
+  }, []);
   return (
     <div>
       <h4>my toy here....</h4>
+      <div>
+        {userToys.map((userToy) => (
+          <SingleUserToy key={userToy._id} userToy={userToy}></SingleUserToy>
+        ))}
+      </div>
     </div>
   );
 };
