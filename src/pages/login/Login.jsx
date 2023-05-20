@@ -7,9 +7,9 @@ const Login = () => {
   const { loginEmail, loginWithGoogle } = useContext(AuthContext);
   const [logged, setLogged] = useState("");
   const [loginError, setLoginError] = useState("");
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         setLogged(loggedUser);
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
         console.log(loggedUser);
         form.reset();
       })
