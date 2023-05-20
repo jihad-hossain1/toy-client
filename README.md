@@ -1,7 +1,7 @@
 
 # Animal Kidol
 
-This is a chef recipe hunter  Single-page web Application . 
+This is a Toys Shop  Single-page web Application . 
 This website based on React js .
 
 
