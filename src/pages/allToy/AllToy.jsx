@@ -8,7 +8,7 @@ const AllToy = () => {
   const [seeMore, setSeeMore] = useState();
 
   useEffect(() => {
-    fetch("https://animal-kidol-server.vercel.app/alltoys")
+    fetch("https://animal-kidol-server.vercel.app/usertoy")
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);

@@ -102,7 +102,7 @@ const Home = () => {
               Shop By Category
             </h4>
           </div>
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-6 px-4">
             <Tabs>
               <TabList className={`text-slate-600 font-semibold `}>
                 {categories.map((category) => (
@@ -124,11 +124,8 @@ const Home = () => {
             <h4 className="text-5xl font-extrabold">Latest Blog</h4>
             <p className="text-sm text-gray-600">
               From jungle animals to farm animals, discover animal toys and
-              figures here. Pick up one of our animal tubs full of <br />{" "}
-              exciting miniature figures or magical unicorns, and dragons! You
-              can prepare for hours of roarsome fun with <br /> Jurassic World
-              dinosaur toys including fearsome Tyrannosauruses and other
-              species.
+              figures here. Pick up one <br /> of our animal tubs full of
+              exciting miniature figures or magical unicorns,
             </p>
           </div>
           <div className="md:flex items-center space-y-3 space-x-2 my-2 mx-3 px-4">

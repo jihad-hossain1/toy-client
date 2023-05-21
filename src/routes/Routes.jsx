@@ -42,7 +42,7 @@ const route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://animal-kidol-server.vercel.app/alltoys/${params.id}`),
+          fetch(`https://animal-kidol-server.vercel.app/usertoy/${params.id}`),
       },
       {
         path: "myToy",
