@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SingleToyCard = ({ toy }) => {
+const SingleToyCard = ({ toy, index }) => {
   const { toyName, category, price, photoUrl, seller, quantity, _id } = toy;
   return (
     <>
@@ -9,6 +9,9 @@ const SingleToyCard = ({ toy }) => {
         <th>
           <button className=""></button>
         </th>
+        <td>
+          <button className="">{index + 1}</button>
+        </td>
         <td>
           <div className="avatar">
             <div className="rounded w-24 h-24">

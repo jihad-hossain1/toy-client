@@ -6,6 +6,7 @@ const AllToy = () => {
   useTitle("AllToys");
   const [allToys, setAllToys] = useState([]);
   const [seeMore, setSeeMore] = useState();
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetch("https://animal-kidol-server.vercel.app/usertoy")
@@ -15,6 +16,15 @@ const AllToy = () => {
         console.log(data);
       });
   }, []);
+
+  const handleSearch = () => {
+    fetch(`https://animal-kidol-server.vercel.app/getToyByText/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAllToys(data);
+      });
+  };
   return (
     <div className="max-w-[1200px] mx-auto">
       <h3 className="text-xl text-gray-600 font-semibold">
@@ -23,7 +33,19 @@ const AllToy = () => {
       {/* <form>
         <input type="search" name="" id="" />
       </form> */}
-
+      <div className=" p-2 text-center">
+        <input
+          onChange={(e) => setSearchText(e.target.value)}
+          type="text"
+          className="p-1 border border-primary"
+        />{" "}
+        <button
+          className="border border-primary shadow rounded px-3"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+      </div>
       <div className="overflow-x-auto w-full">
         {" "}
         <table className="table w-full">
@@ -45,9 +67,15 @@ const AllToy = () => {
             </tr>
           </thead>
           <tbody>
-            {allToys.slice(0, seeMore ? allToys.length : 20).map((toy) => (
-              <SingleToyCard key={toy._id} toy={toy}></SingleToyCard>
-            ))}
+            {allToys
+              .slice(0, seeMore ? allToys.length : 20)
+              .map((toy, index) => (
+                <SingleToyCard
+                  key={toy._id}
+                  toy={toy}
+                  index={index}
+                ></SingleToyCard>
+              ))}
           </tbody>
         </table>
       </div>
