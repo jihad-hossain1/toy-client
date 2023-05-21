@@ -23,10 +23,33 @@ const AllToy = () => {
       {/* <form>
         <input type="search" name="" id="" />
       </form> */}
-      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
-        {allToys.slice(0, seeMore ? allToys.length : 20).map((toy) => (
-          <SingleToyCard key={toy._id} toy={toy}></SingleToyCard>
-        ))}
+
+      <div className="overflow-x-auto w-full">
+        {" "}
+        <table className="table w-full">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" className="checkbox" />
+                </label>
+              </th>
+              <th>Image</th>
+              <th>Toy Name</th>
+              <th>Available Qty</th>
+              <th>seller</th>
+              <th>Price</th>
+              <th>catetory</th>
+              <th>details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allToys.slice(0, seeMore ? allToys.length : 20).map((toy) => (
+              <SingleToyCard key={toy._id} toy={toy}></SingleToyCard>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div className="flex flex-col items-end my-4">
         {!seeMore && (
