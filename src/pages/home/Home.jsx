@@ -42,7 +42,9 @@ const Home = () => {
   
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allToysByCategory/${activeTab}`)
+    fetch(
+      `https://animal-kidol-server.vercel.app/allToysByCategory/${activeTab}`
+    )
       .then((res) => res.json())
       .then((result) => {
         setCategories(result);
@@ -110,27 +112,7 @@ const Home = () => {
         </div>
 
         {/* shop by category */}
-        {/* <div className="my-6 md:mt-24" data-aos="fade-up-left">
-          <div className="py-5">
-            <h4 className="text-center text-3xl font-extrabold">
-              Shop By Category
-            </h4>
-          </div>
-          <div className="flex justify-center mt-6 px-4">
-            <Tabs>
-              <TabList className={`text-slate-600 font-semibold `}>
-                {categories.map((category) => (
-                  <Tab key={category._id}>{category.name}</Tab>
-                ))}
-              </TabList>
-
-              <TabPanel></TabPanel>
-              <TabPanel>
-                <h2>Any content 2</h2>
-              </TabPanel>
-            </Tabs>
-          </div>
-        </div> */}
+       
         <div className="py-5 mt-10">
           <h4 className="text-center text-3xl font-extrabold">
             Shop By Category
