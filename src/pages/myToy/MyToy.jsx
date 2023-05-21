@@ -69,14 +69,32 @@ const MyToy = () => {
         My Total Added Toys:{" "}
         <span className="font-semibold text-primary">{userToys.length}</span>
       </h4>
-      <div>
-        {userToys.map((userToy) => (
-          <SingleUserToy
-            key={userToy._id}
-            userToy={userToy}
-            handleDelete={handleDelete}
-          ></SingleUserToy>
-        ))}
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" className="checkbox" />
+                </label>
+              </th>
+              <th>Toy Name</th>
+              <th>Toy Info</th>
+              <th>cutomize</th>
+              <th>details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userToys.map((userToy) => (
+              <SingleUserToy
+                key={userToy._id}
+                userToy={userToy}
+                handleDelete={handleDelete}
+              ></SingleUserToy>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

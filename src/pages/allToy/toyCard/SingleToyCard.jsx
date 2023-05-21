@@ -5,7 +5,7 @@ const SingleToyCard = ({ toy }) => {
   const { toyName, category, price, photoUrl, seller, quantity, _id } = toy;
   return (
     <>
-      <tr>
+      <tr data-aos="zoom-in">
         <th>
           <button className=""></button>
         </th>
