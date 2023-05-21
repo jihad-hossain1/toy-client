@@ -36,7 +36,11 @@ const route = createBrowserRouter([
       },
       {
         path: "allToy/:id",
-        element: <SingleToyDetails></SingleToyDetails>,
+        element: (
+          <PrivateRoute>
+            <SingleToyDetails></SingleToyDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://animal-kidol-server.vercel.app/alltoys/${params.id}`),
       },
