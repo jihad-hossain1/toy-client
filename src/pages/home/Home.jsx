@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
 import img1 from "../../assets/svg/Cloudy.svg";
 import GallaryCard from "../../components/gallaryCard/GallaryCard";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useTitle from "../../hook/useTitle";
-// import DragonToys from "../../components/toyCategory/DragonToys";
+import SinglgeCard from "./categorycard/SinglgeCard";
 
-// import img2 from '../../assets/svg/babyBanner-removebg-preview.png'
 const Home = () => {
   useTitle("Home");
   const [gallaries, setGallaries] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [activeTab, setActiveTab] = useState("Dragon");
+  // console.log(categories);
   // const [allToys, setAllToys] = useState([]);
   useEffect(() => {
     fetch("https://animal-kidol-server.vercel.app/toyGallary")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         setGallaries(data);
       });
   });
-  useEffect(() => {
-    fetch("https://animal-kidol-server.vercel.app/category")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setCategories(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://animal-kidol-server.vercel.app/category")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // console.log(data);
+  //       setCategories(data);
+  //     });
+  // }, []);
 
   // useEffect(() => {
   //   fetch("https://animal-kidol-server.vercel.app/alltoys")
@@ -38,6 +38,20 @@ const Home = () => {
   //     });
   // }, []);
   // console.log(allToys);
+
+  
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/allToysByCategory/${activeTab}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setCategories(result);
+      });
+  }, [activeTab]);
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
   const latestBlog = [
     {
       name: "June cha",
@@ -96,7 +110,7 @@ const Home = () => {
         </div>
 
         {/* shop by category */}
-        <div className="my-6 md:mt-24" data-aos="fade-up-left">
+        {/* <div className="my-6 md:mt-24" data-aos="fade-up-left">
           <div className="py-5">
             <h4 className="text-center text-3xl font-extrabold">
               Shop By Category
@@ -115,6 +129,39 @@ const Home = () => {
                 <h2>Any content 2</h2>
               </TabPanel>
             </Tabs>
+          </div>
+        </div> */}
+        <div className="py-5 mt-10">
+          <h4 className="text-center text-3xl font-extrabold">
+            Shop By Category
+          </h4>
+        </div>
+
+        <div className=" space-x-3 py-4">
+          <div
+            onClick={() => handleTabClick("Dragon")}
+            className={`rounded boder bg-primary inline-block px-2 cursor-pointer ${
+              activeTab == "Dragon" ? " bg-cyan-300 text-black" : ""
+            }`}
+          >
+            Dragon Toys
+          </div>
+          <div
+            onClick={() => handleTabClick("Elephant")}
+            className={`rounded boder bg-info inline-block px-2 cursor-pointer ${
+              activeTab == "Elephant" ? " bg-primary text-black" : ""
+            }`}
+          >
+            Elephant Toys
+          </div>
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3 mt-5">
+
+            {categories?.map(categorie => <SinglgeCard
+              key={categorie._id}
+              categorie={categorie}
+            ></SinglgeCard>)}
+            {/* {categories?.length} */}
+           
           </div>
         </div>
 
