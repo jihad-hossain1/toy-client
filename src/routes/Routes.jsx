@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import React from "react";
 import Main from "../layouts/main/Main";
-import Home from "../pages/home/Home";
+
+// import Home from "../pages/home/Home";
 import AllToy from "../pages/allToy/AllToy";
 import MyToy from "../pages/myToy/MyToy";
 import AddToy from "../pages/addToy/AddToy";
@@ -12,6 +14,8 @@ import UpdatedToy from "../pages/myToy/updateToy/UpdatedToy";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Error/ErrorPage";
 
+const LazyHome = React.lazy(() => import("../pages/home/Home"));
+
 const route = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +24,11 @@ const route = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: (
+          <React.Suspense fallback="Loading...">
+            <LazyHome></LazyHome>
+          </React.Suspense>
+        ),
       },
       {
         path: "allToy",

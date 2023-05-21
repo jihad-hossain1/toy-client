@@ -11,6 +11,7 @@ const Home = () => {
   useTitle("Home");
   const [gallaries, setGallaries] = useState([]);
   const [categories, setCategories] = useState([]);
+  // const [allToys, setAllToys] = useState([]);
   useEffect(() => {
     fetch("https://animal-kidol-server.vercel.app/toyGallary")
       .then((res) => res.json())
@@ -23,11 +24,20 @@ const Home = () => {
     fetch("https://animal-kidol-server.vercel.app/category")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setCategories(data);
       });
   }, []);
 
+  // useEffect(() => {
+  //   fetch("https://animal-kidol-server.vercel.app/alltoys")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setAllToys(data);
+  //     });
+  // }, []);
+  // console.log(allToys);
   const latestBlog = [
     {
       name: "June cha",
@@ -144,6 +154,7 @@ const Home = () => {
           </h2>
           <div className="grid md:grid-cols-2 gap-3 px-3 mt-5">
             <div
+              data-aos="zoom-in-left"
               className="hero"
               style={{
                 backgroundImage: `url("https://i.ibb.co/RHmMrrT/5.jpg")`,
@@ -165,6 +176,7 @@ const Home = () => {
               </div>
             </div>
             <div
+              data-aos="zoom-in-right"
               className="hero"
               style={{
                 backgroundImage: `url("https://i.ibb.co/NnrQM2k/4.jpg")`,
