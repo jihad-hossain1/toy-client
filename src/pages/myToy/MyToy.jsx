@@ -9,7 +9,7 @@ const MyToy = () => {
   const { user } = useContext(AuthContext);
   const [userToys, setUserToys] = useState([]);
 
-  const url = `https://animal-kidol-server.vercel.app/usertoy?email=${user?.email}`;
+  const url = `${import.meta.env.VITE_BASE_URL}/usertoy?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -31,7 +31,7 @@ const MyToy = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log("Delete Confirm!");
-        fetch(`https://animal-kidol-server.vercel.app/usertoy/${id}`, {
+        fetch(`${import.meta.env.VITE_BASE_URL}/usertoy/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -49,7 +49,7 @@ const MyToy = () => {
   // const handleDelete = (id) => {
   //   const proceed = confirm("Are you sure you want to delete");
   //   if (proceed) {
-  //     fetch(`https://animal-kidol-server.vercel.app/usertoy/${id}`, {
+  //     fetch(`http://localhost:5000/usertoy/${id}`, {
   //       method: "DELETE",
   //     })
   //       .then((res) => res.json())

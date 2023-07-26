@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SingleToyCard from "./toyCard/SingleToyCard";
 import useTitle from "../../hook/useTitle";
-
+// ${import.meta.env.VITE_BASE_URL}
 const AllToy = () => {
   useTitle("AllToys");
   const [allToys, setAllToys] = useState([]);
@@ -9,7 +9,7 @@ const AllToy = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch("https://animal-kidol-server.vercel.app/usertoy")
+    fetch(`${import.meta.env.VITE_BASE_URL}/usertoy`)
       .then((res) => res.json())
       .then((data) => {
         setAllToys(data);
@@ -18,7 +18,7 @@ const AllToy = () => {
   }, []);
 
   const handleSearch = () => {
-    fetch(`https://animal-kidol-server.vercel.app/getToyByText/${searchText}`)
+    fetch(`${import.meta.env.VITE_BASE_URL}/getToyByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

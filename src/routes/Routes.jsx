@@ -42,7 +42,7 @@ const route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://animal-kidol-server.vercel.app/usertoy/${params.id}`),
+          fetch(`${import.meta.env.VITE_BASE_URL}/usertoy/${params.id}`),
       },
       {
         path: "myToy",
@@ -68,7 +68,7 @@ const route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://animal-kidol-server.vercel.app/usertoy/${params.id}`),
+          fetch(`${import.meta.env.VITE_BASE_URL}/usertoy/${params.id}`),
       },
       {
         path: "login",

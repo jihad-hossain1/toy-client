@@ -31,7 +31,7 @@ const AddToy = () => {
     };
     console.log(allToys);
 
-    fetch("https://animal-kidol-server.vercel.app/usertoy", {
+    fetch(`${import.meta.env.VITE_BASE_URL}/usertoy`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

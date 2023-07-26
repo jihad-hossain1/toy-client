@@ -23,7 +23,7 @@ const UpdatedToy = () => {
       quantity,
     };
     console.log(updateToys);
-    fetch(`https://animal-kidol-server.vercel.app/usertoy/${_id}`, {
+    fetch(`${import.meta.env.VITE_BASE_URL}/usertoy/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

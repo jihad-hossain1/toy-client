@@ -5,7 +5,7 @@ import GallaryCard from "../../components/gallaryCard/GallaryCard";
 import "react-tabs/style/react-tabs.css";
 import useTitle from "../../hook/useTitle";
 import SinglgeCard from "./categorycard/SinglgeCard";
-
+// ${import.meta.env.VITE_BASE_URL}
 const Home = () => {
   useTitle("Home");
   const [gallaries, setGallaries] = useState([]);
@@ -14,14 +14,14 @@ const Home = () => {
   // console.log(categories);
   // const [allToys, setAllToys] = useState([]);
   useEffect(() => {
-    fetch("https://animal-kidol-server.vercel.app/toyGallary")
+    fetch(`${import.meta.env.VITE_BASE_URL}/toyGallary`)
       .then((res) => res.json())
       .then((data) => {
         setGallaries(data);
       });
   });
   // useEffect(() => {
-  //   fetch("https://animal-kidol-server.vercel.app/category")
+  //   fetch("http://localhost:5000/category")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       // console.log(data);
@@ -30,7 +30,7 @@ const Home = () => {
   // }, []);
 
   // useEffect(() => {
-  //   fetch("https://animal-kidol-server.vercel.app/alltoys")
+  //   fetch("http://localhost:5000/alltoys")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
@@ -39,12 +39,8 @@ const Home = () => {
   // }, []);
   // console.log(allToys);
 
-  
-
   useEffect(() => {
-    fetch(
-      `https://animal-kidol-server.vercel.app/allToysByCategory/${activeTab}`
-    )
+    fetch(`${import.meta.env.VITE_BASE_URL}/allToysByCategory/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         setCategories(result);
@@ -112,7 +108,7 @@ const Home = () => {
         </div>
 
         {/* shop by category */}
-       
+
         <div className="py-5 mt-10">
           <h4 className="text-center text-3xl font-extrabold">
             Shop By Category
@@ -137,13 +133,13 @@ const Home = () => {
             Elephant Toys
           </div>
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3 mt-5">
-
-            {categories?.map(categorie => <SinglgeCard
-              key={categorie._id}
-              categorie={categorie}
-            ></SinglgeCard>)}
+            {categories?.map((categorie) => (
+              <SinglgeCard
+                key={categorie._id}
+                categorie={categorie}
+              ></SinglgeCard>
+            ))}
             {/* {categories?.length} */}
-           
           </div>
         </div>
 
